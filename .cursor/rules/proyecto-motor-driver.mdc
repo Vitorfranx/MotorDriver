@@ -1,0 +1,34 @@
+---
+description: Contexto permanente del proyecto Driver de motor modular
+alwaysApply: true
+---
+
+# Proyecto: Driver de motor modular
+
+## Idioma
+
+Responde **siempre en espanol**.
+
+## Protocolo de trabajo
+
+Este proyecto sigue el protocolo **RIPER-5** definido en las reglas del workspace. Declara el modo al inicio de cada respuesta y no cambies de modo sin senal explicita del usuario.
+
+## Al iniciar cada sesion
+
+Lee estos documentos antes de proponer nada:
+
+1. `docs/00-ESTADO.md` — estado actual, pendientes y decisiones abiertas.
+2. `docs/02-arquitectura.md` — dominios electricos y barrera de aislamiento.
+3. `docs/decisiones/` — registro de decisiones (ADR) con su razonamiento.
+
+## Al terminar cada sesion
+
+Actualiza `docs/00-ESTADO.md` con lo hecho, lo pendiente y las decisiones que hayan quedado abiertas. Si se ha tomado una decision de arquitectura nueva, anade un ADR nuevo en `docs/decisiones/`.
+
+## Reglas del proyecto
+
+- **No revoques una decision registrada en un ADR** sin avisar explicitamente al usuario y crear un ADR nuevo que sustituya al anterior.
+- **Restriccion de fabricacion**: las PCBs las monta JLCPCB. Ningun componente se da por cerrado sin verificar que existe en su biblioteca. La columna `Ref_JLCPCB` de los `bom.csv` es obligatoria, y siempre hay que anotar una alternativa.
+- **El usuario disena los esquematicos y las PCBs**. El trabajo aqui es arquitectura, seleccion de componentes, calculos, documentacion y firmware.
+- **La PCB Cerebro es invariante entre vehiculos.** Cualquier propuesta que obligue a modificarla para adaptarse a un vehiculo concreto va en contra de la arquitectura y debe senalarse como tal.
+- El microcontrolador es **STM32G474QET6** (LQFP128), configurado con STM32CubeMX y programado en STM32CubeIDE.
